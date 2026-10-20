@@ -127,11 +127,12 @@ h1 span{color:var(--red);}
 .brands-track{display:flex; width:max-content; animation:brandsScroll 28s linear infinite;}
 .brands-track:hover{animation-play-state:paused;}
 .brand-item{
-  display:flex; align-items:center; gap:10px;
-  font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22px; letter-spacing:1px;
-  color:rgba(242,240,236,.55); white-space:nowrap; padding:0 36px;
+  display:flex; align-items:center; gap:14px;
+  white-space:nowrap; padding:0 40px;
 }
-.brand-item .dot{color:var(--red); font-size:14px;}
+.brand-item img{height:30px; width:auto; filter:brightness(0) invert(1); opacity:.6; transition:opacity .2s;}
+.brand-item:hover img{opacity:1;}
+.brand-item .dot{color:var(--red); font-size:10px;}
 @keyframes brandsScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
 
 /* SECTION HEAD */
@@ -299,6 +300,22 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
   </div>
 </section>
 
+<section class="sec alt">
+  <div class="wrap">
+    <div class="vag-box">
+      <div class="hero-photo" style="box-shadow:none; height:420px;">
+        <img src="assets/lucas-trabajando.jpg" alt="Lucas Monzo trabajando en una caja de cambios" style="width:100%; height:100%; object-fit:cover; object-position:50% 25%;"/>
+      </div>
+      <div>
+        <div class="eyebrow">Quién hace el trabajo</div>
+        <h3>Lucas Monzo, al frente de cada auto que entra.</h3>
+        <p>Dueño y mecánico del taller. Cada trabajo pasa por sus manos, desde el diagnóstico hasta la entrega, con ayuda ocasional cuando el volumen lo requiere.</p>
+        <p>Más de un año especializándose en el grupo VAG, con el objetivo de que cada cliente entienda qué tiene su auto y qué se le hizo, sin vueltas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="sec" id="trabajos">
   <div class="wrap">
     <div class="sec-head">
@@ -319,6 +336,7 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
       <img src="assets/gallery/suv-comun.jpg" alt="SUV en el taller"/>
       <img src="assets/gallery/sedan-vag-elevador.jpg" alt="Sedán VAG en el elevador"/>
       <img src="assets/gallery/focus-comun.jpg" alt="Ford Focus en el taller"/>
+      <img src="assets/gallery/vw-cc-elevador.jpg" alt="Volkswagen CC en el elevador"/>
     </div>
   </div>
 </section>
@@ -367,10 +385,15 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
 </footer>
 
 <script>
-  const BRANDS = ['Volkswagen','Audi','BMW','Toyota','Peugeot','Ford','Chevrolet','Fiat','Renault','Nissan','Honda','Citroën'];
+  const BRANDS = [
+    {name:'Volkswagen', file:'volkswagen'}, {name:'Audi', file:'audi'}, {name:'BMW', file:'bmw'},
+    {name:'Toyota', file:'toyota'}, {name:'Peugeot', file:'peugeot'}, {name:'Ford', file:'ford'},
+    {name:'Chevrolet', file:'chevrolet'}, {name:'Fiat', file:'fiat'}, {name:'Renault', file:'renault'},
+    {name:'Nissan', file:'nissan'}, {name:'Honda', file:'honda'}, {name:'Citroën', file:'citroen'}
+  ];
   const track = document.getElementById('brandsTrack');
   const list = [...BRANDS, ...BRANDS]; // duplicado para loop continuo
-  track.innerHTML = list.map(b => `<span class="brand-item">${b}<span class="dot">●</span></span>`).join('');
+  track.innerHTML = list.map(b => `<span class="brand-item"><img src="assets/brands/${b.file}.svg" alt="${b.name}" loading="lazy"><span class="dot">●</span></span>`).join('');
 
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
