@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Motorrsport.LM | Taller mecánico especializado en VAG — Córdoba</title>
+<meta name="description" content="Taller mecánico especializado en Volkswagen y Audi en Córdoba. Diagnóstico con scanner multimarca, mecánica general, cajas de cambio, frenos y más. También atendemos otras marcas."/>
+<style>
+:root{
+  --bg:#141414;
+  --bg2:#1c1c1c;
+  --panel:#202020;
+  --red:#C8252B;
+  --red2:#8f1c21;
+  --ink:#F2F0EC;
+  --muted:#aaa39c;
+  --line:rgba(242,240,236,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  line-height:1.5;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+
+/* textura metálica sutil de fondo */
+.metal-bg{
+  background-image:
+    repeating-linear-gradient(115deg, rgba(255,255,255,.015) 0px, rgba(255,255,255,.015) 1px, transparent 1px, transparent 4px),
+    radial-gradient(ellipse at 20% 0%, rgba(200,37,43,.08), transparent 55%);
+}
+
+/* NAV */
+header{
+  position:sticky; top:0; z-index:50;
+  background:rgba(20,20,20,.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+}
+nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;}
+.logo-nav img{height:34px;width:auto;}
+.nav-links{display:flex;gap:28px;font-size:13px;letter-spacing:.5px;text-transform:uppercase;font-weight:600;}
+.nav-links a{opacity:.8;text-decoration:none;transition:opacity .2s;}
+.nav-links a:hover{opacity:1;color:var(--red);}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--red); color:#fff; font-weight:700; font-size:13px;
+  letter-spacing:.5px; text-transform:uppercase;
+  padding:12px 22px; border-radius:4px; text-decoration:none;
+  border:1px solid var(--red);
+  transition:background .2s;
+}
+.btn:hover{background:var(--red2);}
+.btn-outline{background:transparent;border:1px solid rgba(242,240,236,.35);color:var(--ink);}
+.btn-outline:hover{border-color:var(--red);color:var(--red);background:transparent;}
+@media (max-width:760px){ .nav-links{display:none;} }
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:88px 0 70px;
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, rgba(200,37,43,.12), transparent 60%);
+  pointer-events:none;
+}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;position:relative;z-index:2;}
+@media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+.eyebrow{
+  display:inline-block; font-size:11.5px; font-weight:800; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--red); background:rgba(200,37,43,.12);
+  border:1px solid rgba(200,37,43,.4); padding:6px 14px; border-radius:100px; margin-bottom:22px;
+}
+h1{font-size:44px; line-height:1.12; font-weight:900; letter-spacing:-1px; margin-bottom:20px;}
+h1 span{color:var(--red);}
+.hero-desc{font-size:16px; color:var(--muted); max-width:480px; margin-bottom:32px;}
+.hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:38px;}
+.hero-facts{display:flex; gap:32px; border-top:1px solid var(--line); padding-top:24px;}
+.hero-facts .f b{display:block; font-size:22px; font-weight:900;}
+.hero-facts .f span{font-size:12px; color:var(--muted);}
+.hero-photo{
+  border-radius:10px; overflow:hidden; border:1px solid var(--line);
+  box-shadow:0 30px 60px rgba(0,0,0,.45);
+}
+
+/* SECTION HEAD */
+.sec{padding:76px 0;}
+.sec-head{max-width:620px; margin-bottom:46px;}
+.sec-head .eyebrow{margin-bottom:14px;}
+.sec-head h2{font-size:32px; font-weight:900; letter-spacing:-.5px; margin-bottom:12px;}
+.sec-head p{color:var(--muted); font-size:15px;}
+.alt{background:var(--bg2);}
+
+/* SERVICIOS */
+.servicios-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+@media (max-width:900px){ .servicios-grid{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:520px){ .servicios-grid{grid-template-columns:1fr;} }
+.svc-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:8px;
+  padding:24px 20px; transition:border-color .2s, transform .2s;
+}
+.svc-card:hover{border-color:var(--red); transform:translateY(-3px);}
+.svc-num{font-size:12px; font-weight:900; color:var(--red); margin-bottom:10px; letter-spacing:1px;}
+.svc-title{font-size:15.5px; font-weight:800; margin-bottom:8px;}
+.svc-desc{font-size:12.8px; color:var(--muted); line-height:1.55;}
+
+/* ESPECIALIZACION */
+.vag-box{
+  display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
+  background:linear-gradient(135deg, var(--panel), var(--bg2));
+  border:1px solid var(--line); border-radius:14px; padding:46px;
+}
+@media (max-width:860px){ .vag-box{grid-template-columns:1fr; padding:30px;} }
+.vag-box h3{font-size:26px; font-weight:900; margin-bottom:16px;}
+.vag-box p{color:var(--muted); font-size:14.5px; margin-bottom:14px;}
+.tag-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:20px;}
+.tag{
+  font-size:11.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase;
+  border:1px solid rgba(242,240,236,.25); padding:7px 14px; border-radius:100px; color:var(--muted);
+}
+.vag-stats{display:flex; flex-direction:column; gap:18px;}
+.vag-stat{display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--line); padding-bottom:16px;}
+.vag-stat b{font-size:30px; font-weight:900; color:var(--red); min-width:70px;}
+.vag-stat span{font-size:13px; color:var(--muted);}
+
+/* GALERIA */
+.gallery-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:170px; gap:12px;
+}
+.gallery-grid img{width:100%; height:100%; object-fit:cover; border-radius:6px; filter:grayscale(.1) contrast(1.05);}
+.gallery-grid .big{grid-column:span 2; grid-row:span 2;}
+@media (max-width:900px){ .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;} .gallery-grid .big{grid-column:span 2; grid-row:span 1;} }
+
+/* CONFIANZA */
+.trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+@media (max-width:900px){ .trust-grid{grid-template-columns:repeat(2,1fr);} }
+.trust-card{text-align:center; padding:12px;}
+.trust-ico{font-size:28px; margin-bottom:14px;}
+.trust-card b{display:block; font-size:14.5px; margin-bottom:8px;}
+.trust-card span{font-size:12.5px; color:var(--muted);}
+
+/* CONTACTO */
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:48px;}
+@media (max-width:860px){ .contact-grid{grid-template-columns:1fr;} }
+.contact-card{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:36px;}
+.c-row{display:flex; gap:16px; padding:16px 0; border-bottom:1px solid var(--line);}
+.c-row:last-child{border-bottom:none;}
+.c-ico{font-size:18px; width:28px;}
+.c-t{font-size:11px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:3px;}
+.c-v{font-size:15px; font-weight:700;}
+.map-frame{border-radius:12px; overflow:hidden; border:1px solid var(--line); min-height:320px;}
+.map-frame iframe{width:100%; height:100%; min-height:320px; border:0; filter:invert(.92) hue-rotate(180deg) contrast(.9);}
+
+footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font-size:12px; color:var(--muted);}
+.fade-in{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+.fade-in.show{opacity:1; transform:none;}
+</style>
+</head>
+<body class="metal-bg">
+
+<header>
+  <div class="wrap">
+    <nav>
+      <div class="logo-nav"><img src="assets/logo-blanco.png" alt="Motorrsport.LM"/></div>
+      <div class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#especializacion">Especialización</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <a class="btn" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Taller mecánico especializado · Córdoba</div>
+      <h1>Especialistas en <span>Volkswagen y Audi.</span><br/>También atendemos tu auto, sea cual sea.</h1>
+      <p class="hero-desc">Diagnóstico con scanner multimarca, mecánica general, cajas de cambio, frenos y mantenimiento preventivo. Trabajamos con la experiencia puntual del grupo VAG y los autos turbo de alta gama.</p>
+      <div class="hero-cta">
+        <a class="btn" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">Escribinos por WhatsApp →</a>
+        <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+      </div>
+      <div class="hero-facts">
+        <div class="f"><b>VAG</b><span>Especialización VW / Audi</span></div>
+        <div class="f"><b>Scanner</b><span>Diagnóstico multimarca</span></div>
+        <div class="f"><b>Garantía</b><span>Sobre cada trabajo</span></div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="assets/gallery/motor-vag-reconstruido.jpg" alt="Motor VAG reconstruido en Motorrsport.LM"/>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="servicios">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Qué hacemos</div>
+      <h2>Servicios.</h2>
+      <p>Mantenimiento y reparación integral, con el scanner y las herramientas para diagnosticar bien antes de tocar nada.</p>
+    </div>
+    <div class="servicios-grid">
+      <div class="svc-card"><div class="svc-num">01</div><div class="svc-title">Mecánica general</div><div class="svc-desc">Reparación y mantenimiento de motor para cualquier marca y modelo.</div></div>
+      <div class="svc-card"><div class="svc-num">02</div><div class="svc-title">Diagnóstico electrónico</div><div class="svc-desc">Scanner de diagnóstico multimarca para encontrar la falla real antes de presupuestar.</div></div>
+      <div class="svc-card"><div class="svc-num">03</div><div class="svc-title">Cajas de cambio</div><div class="svc-desc">Manuales y automáticas, revisión y reparación.</div></div>
+      <div class="svc-card"><div class="svc-num">04</div><div class="svc-title">Distribución y correas</div><div class="svc-desc">Cambio de correa y kit de distribución en tiempo y forma.</div></div>
+      <div class="svc-card"><div class="svc-num">05</div><div class="svc-title">Frenos y suspensión</div><div class="svc-desc">Discos, pastillas, amortiguadores y componentes de suspensión.</div></div>
+      <div class="svc-card"><div class="svc-num">06</div><div class="svc-title">Potenciación / Chip tuning</div><div class="svc-desc">Ajustes de potencia para autos turbo y de alta gama.</div></div>
+      <div class="svc-card"><div class="svc-num">07</div><div class="svc-title">Mantenimiento preventivo</div><div class="svc-desc">Service completo: aceite, filtros y revisión general.</div></div>
+      <div class="svc-card"><div class="svc-num">08</div><div class="svc-title">Preparación para VTV</div><div class="svc-desc">Dejamos tu auto listo para pasar la revisión técnica.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt" id="especializacion">
+  <div class="wrap">
+    <div class="vag-box">
+      <div>
+        <div class="eyebrow">Nuestro diferencial</div>
+        <h3>El fuerte es grupo VAG. El conocimiento, para cualquier turbo de alta gama.</h3>
+        <p>Nos especializamos en Volkswagen y Audi: más de la mitad de los autos que entran al taller son de esta marca. Esa experiencia puntual se traduce en diagnósticos más rápidos y precisos.</p>
+        <p>Pero no hace falta que tengas un VAG para traer tu auto. También atendemos autos turbo y de alta gama de otras marcas, con el mismo scanner y las mismas herramientas.</p>
+        <div class="tag-row">
+          <span class="tag">Volkswagen</span>
+          <span class="tag">Audi</span>
+          <span class="tag">Autos turbo</span>
+          <span class="tag">Alta gama</span>
+          <span class="tag">Atendemos todas las marcas</span>
+        </div>
+      </div>
+      <div class="vag-stats">
+        <div class="vag-stat"><b>+50%</b><span>de los autos que atendemos son del grupo VAG (Volkswagen y Audi).</span></div>
+        <div class="vag-stat"><b>1</b><span>elevador propio, con espacio para 3 autos más trabajando en simultáneo.</span></div>
+        <div class="vag-stat"><b>633+</b><span>seguidores en Instagram siguiendo los trabajos reales del taller.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="trabajos">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Trabajos reales</div>
+      <h2>Lo que entra al taller.</h2>
+      <p>Fotos reales de autos que pasaron por Motorrsport.LM. Nada de bancos de imágenes.</p>
+    </div>
+    <div class="gallery-grid">
+      <img class="big" src="assets/gallery/motor-vag-reconstruido.jpg" alt="Motor VAG reconstruido"/>
+      <img src="assets/gallery/bmw-1-negro.jpg" alt="BMW Serie 1 en el taller"/>
+      <img src="assets/gallery/audi-a3-elevador.jpg" alt="Audi A3 en el elevador"/>
+      <img src="assets/gallery/interior-gti.jpg" alt="Interior de un GTI"/>
+      <img src="assets/gallery/audi-a3-freno-detalle.jpg" alt="Detalle de freno Audi A3"/>
+      <img src="assets/gallery/vento-inyectores.jpg" alt="Inyectores de un Vento"/>
+      <img src="assets/gallery/bmw-1-plata.jpg" alt="BMW Serie 1 plateado"/>
+      <img src="assets/gallery/peugeot-208-elevador.jpg" alt="Peugeot 208 en el elevador"/>
+      <img src="assets/gallery/peugeot-208-aceite.jpg" alt="Service de aceite Peugeot 208"/>
+      <img src="assets/gallery/suv-comun.jpg" alt="SUV en el taller"/>
+      <img src="assets/gallery/sedan-vag-elevador.jpg" alt="Sedán VAG en el elevador"/>
+      <img src="assets/gallery/focus-comun.jpg" alt="Ford Focus en el taller"/>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Por qué elegirnos</div>
+      <h2>Confianza antes de que llames.</h2>
+    </div>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="trust-ico">🔧</div><b>Garantía en el trabajo</b><span>Respaldo verbal sobre cada reparación realizada.</span></div>
+      <div class="trust-card"><div class="trust-ico">🖥️</div><b>Scanner multimarca</b><span>Diagnóstico preciso antes de presupuestar.</span></div>
+      <div class="trust-card"><div class="trust-ico">🏎️</div><b>Especialistas VAG</b><span>Conocimiento puntual en Volkswagen y Audi.</span></div>
+      <div class="trust-card"><div class="trust-ico">🤝</div><b>Derivados por otros talleres</b><span>Mecánicos de la zona nos derivan trabajos puntuales.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Contacto</div>
+      <h2>Traé tu auto o escribinos.</h2>
+      <p>Atendemos de lunes a viernes, de 9 a 20 hs.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="c-row"><div class="c-ico">📍</div><div><div class="c-t">Dirección</div><div class="c-v">Pje. Cabildo 659, Córdoba</div></div></div>
+        <div class="c-row"><div class="c-ico">📞</div><div><div class="c-t">Teléfono / WhatsApp</div><div class="c-v">351 242 5013</div></div></div>
+        <div class="c-row"><div class="c-ico">🕒</div><div><div class="c-t">Horario</div><div class="c-v">Lunes a viernes, 9 a 20 hs</div></div></div>
+        <div class="c-row"><div class="c-ico">📷</div><div><div class="c-t">Instagram</div><div class="c-v">@motorrsport.lm</div></div></div>
+        <div style="margin-top:26px;">
+          <a class="btn" style="width:100%;justify-content:center;" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">Escribinos ahora →</a>
+        </div>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Pasaje+Cabildo+659,+Cordoba,+Argentina&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Motorrsport.LM · Taller mecánico especializado · Córdoba, Argentina</div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
+  },{threshold:.12});
+  document.querySelectorAll('.sec, .hero-grid').forEach(el=>{ el.classList.add('fade-in'); io.observe(el); });
+</script>
+
+</body>
+</html>
