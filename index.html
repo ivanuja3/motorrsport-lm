@@ -110,6 +110,30 @@ h1 span{color:var(--red);}
   box-shadow:0 30px 60px rgba(0,0,0,.45);
 }
 
+/* MARCAS MARQUEE */
+.brands-strip{
+  background:var(--bg2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  padding:22px 0; overflow:hidden; position:relative;
+}
+.brands-strip::before, .brands-strip::after{
+  content:''; position:absolute; top:0; bottom:0; width:90px; z-index:2; pointer-events:none;
+}
+.brands-strip::before{ left:0; background:linear-gradient(90deg, var(--bg2), transparent); }
+.brands-strip::after{ right:0; background:linear-gradient(-90deg, var(--bg2), transparent); }
+.brands-label{
+  text-align:center; font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--muted); margin-bottom:16px; font-weight:700;
+}
+.brands-track{display:flex; width:max-content; animation:brandsScroll 28s linear infinite;}
+.brands-track:hover{animation-play-state:paused;}
+.brand-item{
+  display:flex; align-items:center; gap:10px;
+  font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:22px; letter-spacing:1px;
+  color:rgba(242,240,236,.55); white-space:nowrap; padding:0 36px;
+}
+.brand-item .dot{color:var(--red); font-size:14px;}
+@keyframes brandsScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
 /* SECTION HEAD */
 .sec{padding:76px 0;}
 .sec-head{max-width:620px; margin-bottom:46px;}
@@ -195,7 +219,10 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
         <a href="#trabajos">Trabajos</a>
         <a href="#contacto">Contacto</a>
       </div>
-      <a class="btn" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">WhatsApp</a>
+      <div style="display:flex; gap:10px;">
+        <a class="btn btn-outline" href="https://instagram.com/motorrsport.lm" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+        <a class="btn" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
     </nav>
   </div>
 </header>
@@ -220,6 +247,11 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
       <img src="assets/gallery/motor-vag-reconstruido.jpg" alt="Motor VAG reconstruido en Motorrsport.LM"/>
     </div>
   </div>
+</section>
+
+<section class="brands-strip">
+  <div class="brands-label">Marcas que pasaron por el taller</div>
+  <div class="brands-track" id="brandsTrack"></div>
 </section>
 
 <section class="sec" id="servicios">
@@ -318,7 +350,7 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
         <div class="c-row"><div class="c-ico">📍</div><div><div class="c-t">Dirección</div><div class="c-v">Pje. Cabildo 659, Córdoba</div></div></div>
         <div class="c-row"><div class="c-ico">📞</div><div><div class="c-t">Teléfono / WhatsApp</div><div class="c-v">351 242 5013</div></div></div>
         <div class="c-row"><div class="c-ico">🕒</div><div><div class="c-t">Horario</div><div class="c-v">Lunes a viernes, 9 a 20 hs</div></div></div>
-        <div class="c-row"><div class="c-ico">📷</div><div><div class="c-t">Instagram</div><div class="c-v">@motorrsport.lm</div></div></div>
+        <div class="c-row"><div class="c-ico">📷</div><div><div class="c-t">Instagram</div><a class="c-v" href="https://instagram.com/motorrsport.lm" target="_blank" rel="noopener" style="text-decoration:none;">@motorrsport.lm →</a></div></div>
         <div style="margin-top:26px;">
           <a class="btn" style="width:100%;justify-content:center;" href="https://wa.me/5493512425013?text=Hola!%20Quiero%20consultar%20sobre%20mi%20auto" target="_blank" rel="noopener">Escribinos ahora →</a>
         </div>
@@ -335,6 +367,11 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
 </footer>
 
 <script>
+  const BRANDS = ['Volkswagen','Audi','BMW','Toyota','Peugeot','Ford','Chevrolet','Fiat','Renault','Nissan','Honda','Citroën'];
+  const track = document.getElementById('brandsTrack');
+  const list = [...BRANDS, ...BRANDS]; // duplicado para loop continuo
+  track.innerHTML = list.map(b => `<span class="brand-item">${b}<span class="dot">●</span></span>`).join('');
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
   },{threshold:.12});
