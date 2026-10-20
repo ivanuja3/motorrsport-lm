@@ -393,7 +393,7 @@ footer{border-top:1px solid var(--line); padding:32px 0; text-align:center; font
   ];
   const track = document.getElementById('brandsTrack');
   const list = [...BRANDS, ...BRANDS]; // duplicado para loop continuo
-  track.innerHTML = list.map(b => `<span class="brand-item"><img src="assets/brands/${b.file}.svg" alt="${b.name}" loading="lazy"><span class="dot">●</span></span>`).join('');
+  track.innerHTML = list.map(b => `<span class="brand-item"><img src="assets/brands/${b.file}.svg" alt="${b.name}" loading="lazy"></span>`).join('');
 
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); } });
