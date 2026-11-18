@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ivanuja3.github.io/motorrsport-lm/sitemap.xml
